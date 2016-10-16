@@ -1,0 +1,21 @@
+---
+parserOptions:
+  ecmaVersion: 7
+env:
+  browser: true
+  commonjs: true
+globals:
+rules:
+  strict:
+    - 2
+    - "global"
+  comma-dangle:
+    - 2
+    - "always"
+  quotes:
+    - 2
+    - "single"
+    -
+      allowTemplateLiterals: true
+  new-cap: 0
+  camelcase: 0

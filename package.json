@@ -1,5 +1,5 @@
 {
-  "name": "bankai",
+  "name": "@arve.knudsen/bankai",
   "version": "3.3.1",
   "description": "DIY asset server",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "lint": "standard",
     "test:cov": "npm run lint && npm run deps && NODE_ENV=test istanbul cover test/index.js"
   },
-  "repository": "yoshuawuyts/bankai",
+  "repository": "aknuds1/bankai",
   "keywords": [
     "server",
     "dev",

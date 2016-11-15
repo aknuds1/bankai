@@ -17,7 +17,7 @@ const bankai = require('./')
 
 const argv = subarg(process.argv.slice(2), {
   string: [ 'open', 'port' ],
-  boolean: [ 'optimize', 'verbose' ],
+  boolean: [ 'optimize', 'verbose', 'help', 'version' ],
   default: {
     optimize: false,
     open: false,
@@ -27,6 +27,7 @@ const argv = subarg(process.argv.slice(2), {
     help: 'h',
     css: 'c',
     js: 'j',
+    help: 'h',
     open: 'o',
     optimize: 'O',
     port: 'p',

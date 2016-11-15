@@ -24,6 +24,7 @@ const argv = subarg(process.argv.slice(2), {
     port: 8080
   },
   alias: {
+    help: 'h',
     css: 'c',
     js: 'j',
     open: 'o',

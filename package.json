@@ -1,5 +1,5 @@
 {
-  "name": "bankai",
+  "name": "@arve.knudsen/bankai",
   "version": "4.0.3",
   "description": "DIY asset server",
   "main": "index.js",
@@ -9,10 +9,12 @@
   "scripts": {
     "start": "./bin.js example.js --open -p 8080",
     "deps": "dependency-check . && dependency-check . --extra --no-dev",
-    "test": "standard && npm run deps",
-    "test:cov": "standard && npm run deps"
+    "test": "npm run lint && npm run deps && NODE_ENV=test node test/index.js",
+    "test:cov": "npm run lint && npm run deps && NODE_ENV=test istanbul cover test/index.js",
+    "browser-test:cov": "npm run lint && npm run deps && NODE_ENV=test node test/test-live.js",
+    "lint": "standard"
   },
-  "repository": "yoshuawuyts/bankai",
+  "repository": "aknuds1/bankai",
   "keywords": [
     "server",
     "dev",
@@ -48,13 +50,23 @@
   },
   "devDependencies": {
     "bel": "^4.5.0",
+    "bluebird": "^3.4.6",
     "choo": "^3.2.0",
     "concat-stream": "^1.5.1",
     "dependency-check": "^2.6.0",
+    "get-server-port": "^1.0.0",
     "is-html": "^1.0.0",
     "istanbul": "^0.4.4",
     "openport": "0.0.4",
+    "phantom": "^3.0.1",
+    "request": "^2.75.0",
+    "sinon": "^1.17.6",
     "standard": "^8.0.0",
     "tape": "^4.6.0"
+  },
+  "standard": {
+    "ignore": [
+      "test/fixtures/**"
+    ]
   }
 }

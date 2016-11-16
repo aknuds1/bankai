@@ -30,7 +30,7 @@ function Bankai (entry, opts) {
   this.cssQueue = []
 
   this._html = _html(opts.html)
-  this._createJs = _javascript(entry, opts.js, setCss)
+  this._createJs = _javascript(entry, opts, setCss)
 
   function setCss (css) {
     self._css = css
@@ -93,13 +93,13 @@ function _javascript (entry, opts, setCss) {
     cache: {}
   }
 
-  opts = xtend(base, opts || {})
+  const jsOpts = xtend(base, opts.js || {})
 
   const b = (this.optimize)
-    ? browserify(opts)
-    : watchify(browserify(opts))
+    ? browserify(jsOpts)
+    : watchify(browserify(jsOpts))
   b.plugin(cssExtract, { out: createCssStream })
-  b.transform(sheetify)
+  b.transform(sheetify, opts.css)
 
   return watchifyRequest(b)
 

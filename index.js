@@ -27,7 +27,7 @@ function Bankai (entry, opts) {
 
   this.optimize = opts.optimize
   this.htmlDisabled = opts.html
-  this.cssDisabled = opts.css
+  this.cssDisabled = opts.css === false
   this.cssQueue = []
 
   this._html = _html(opts.html)
@@ -59,7 +59,7 @@ Bankai.prototype.html = function (req, res) {
 
 // (obj, obj) -> readStream
 Bankai.prototype.css = function (req, res) {
-  assert.ok(this.cssDisabled !== false, 'bankai: css is disabled')
+  assert.ok(!this.cssDisabled, 'bankai: css is disabled')
   if (res) res.setHeader('Content-Type', 'text/css')
   if (!this._css) {
     logger.debug(`Waiting for CSS content to be done`)

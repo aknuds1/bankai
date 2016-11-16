@@ -44,8 +44,8 @@ test('html', function (t) {
   })
 })
 
-test('css', function (t) {
-  t.test('returns data', function (t) {
+test('css', (t) => {
+  t.test('returns data', (t) => {
     t.plan(2)
     const assets = createBankai()
     const server = http.createServer(function (req, res) {
@@ -53,9 +53,9 @@ test('css', function (t) {
     })
     server.listen()
 
-    process.nextTick(function () {
-      http.get('http://localhost:' + getPort(server), function (res) {
-        res.pipe(concat(function (buf) {
+    process.nextTick(() =>) {
+      http.get(`http://localhost:${getPort(server)}`, (res) => {
+        res.pipe(concat((buf) => {
           const str = String(buf)
           t.equal(res.headers['content-type'], 'text/css')
           t.ok(/\.foo {}/.test(str), 'css is equal')

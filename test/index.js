@@ -53,7 +53,7 @@ test('css', (t) => {
     })
     server.listen()
 
-    process.nextTick(() =>) {
+    process.nextTick(() => {
       http.get(`http://localhost:${getPort(server)}`, (res) => {
         res.pipe(concat((buf) => {
           const str = String(buf)

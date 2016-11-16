@@ -98,6 +98,26 @@ test('css', (t) => {
     //           })
     //       })
   })
+
+  t.test('css can be disabled', (t) => {
+    t.plan(2)
+    const pluginSpy = sinon.spy()
+    const transformSpy = sinon.spy()
+    createBankai({
+      css: false
+    }, {
+      watchify: () => {
+        return {
+          plugin: pluginSpy,
+          transform: transformSpy
+        }
+      },
+      'watchify-request': () => {}
+    })
+
+    t.ok(!pluginSpy.called, 'Browserify plugin should not be registered')
+    t.ok(!transformSpy.called, 'Browserify transform should not be registered')
+  })
 })
 
 test('js', function (t) {

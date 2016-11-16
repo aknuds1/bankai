@@ -1,1 +1,2 @@
-require('./app.js')
+const sf = require('sheetify')
+sf`.foo {}`

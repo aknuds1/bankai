@@ -27,7 +27,6 @@ const argv = subarg(process.argv.slice(2), {
     help: 'h',
     css: 'c',
     js: 'j',
-    help: 'h',
     open: 'o',
     optimize: 'O',
     port: 'p',

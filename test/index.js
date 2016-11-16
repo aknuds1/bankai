@@ -1,5 +1,3 @@
-'use strict'
-
 const childProcess = require('child_process')
 const getPort = require('get-server-port')
 const concat = require('concat-stream')

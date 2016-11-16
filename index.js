@@ -29,7 +29,7 @@ function Bankai (entry, opts) {
   this.cssQueue = []
 
   this._html = _html(opts.html)
-  this._createJs = _javascript(entry, opts.js, (css) => {
+  this._createJs = _javascript(entry, opts, (css) => {
     this._css = css
     while (this.cssQueue.length) {
       this.cssQueue.shift()()
@@ -69,12 +69,12 @@ Bankai.prototype.css = function (req, res) {
     logger.debug(`Waiting for CSS content to be done`)
     const through = new stream.PassThrough()
     this.cssQueue.push(() => {
-      logger.debug(`CSS content is finished, pumping it out: '${this._css}'`)
+      logger.debug(`CSS content is finished, writing to stream`)
       pump(from([this._css]), through)
     })
     return through
   } else {
-    logger.debug(`Returning CSS content: '${this._css}'`)
+    logger.debug(`Returning CSS content`)
     return from([this._css])
   }
 }
@@ -99,13 +99,13 @@ const _javascript = (entry, opts, setCss) => {
     cache: {}
   }
 
-  opts = xtend(base, opts || {})
+  const jsOpts = xtend(base, opts.js || {})
 
   const b = (this.optimize)
-    ? browserify(opts)
-    : watchify(browserify(opts))
+    ? browserify(jsOpts)
+    : watchify(browserify(jsOpts))
   b.plugin(cssExtract, { out: createCssStream })
-  b.transform(sheetify)
+  b.transform(sheetify, opts.css)
 
   return watchifyRequest(b)
 

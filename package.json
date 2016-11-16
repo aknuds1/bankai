@@ -59,6 +59,7 @@
     "istanbul": "^0.4.4",
     "openport": "0.0.4",
     "phantom": "^3.0.1",
+    "proxyquire": "^1.7.10",
     "request": "^2.75.0",
     "sinon": "^1.17.6",
     "standard": "^8.0.0",

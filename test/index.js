@@ -3,20 +3,14 @@ const getPort = require('get-server-port')
 const concat = require('concat-stream')
 const openport = require('openport')
 const isHtml = require('is-html')
-const bankai = require('../')
 const http = require('http')
 const path = require('path')
 const test = require('tape')
+const sinon = require('sinon')
+const proxyquire = require('proxyquire')
 // const Promise = require('bluebird')
 // const fs = require('fs')
 // const request = require('request')
-// const sinon = require('sinon')
-const bole = require('bole')
-const garnish = require('garnish')
-
-const pretty = garnish({ level: 'debug', name: 'bankai' })
-pretty.pipe(process.stdout)
-bole.output({ stream: pretty, level: 'debug' })
 
 const entryPath = path.join(__dirname, 'fixtures', 'index.js')
 // const appJsPath = path.join(__dirname, 'fixtures', 'app.js')
@@ -27,21 +21,22 @@ const entryPath = path.join(__dirname, 'fixtures', 'index.js')
 //   return Promise.promisify(request)(`http://localhost:${getPort(server)}/${path}`)
 // })
 
-const createBankai = () => {
-  return bankai(entryPath)
+const createBankai = (opts, stubs) => {
+  const bankai = stubs != null ? proxyquire('..', stubs) : require('..')
+  return bankai(entryPath, opts)
 }
 
-test('html', function (t) {
-  t.test('returns data', function (t) {
+test('html', (t) => {
+  t.test('returns data', (t) => {
     t.plan(2)
     const assets = createBankai()
-    const server = http.createServer(function (req, res) {
+    const server = http.createServer((req, res) => {
       assets.html(req, res).pipe(res)
     })
     server.listen()
 
-    http.get('http://localhost:' + getPort(server), function (res) {
-      res.pipe(concat({ string: true }, function (str) {
+    http.get(`http://localhost:${getPort(server)}`, (res) => {
+      res.pipe(concat({ string: true }, (str) => {
         t.equal(res.headers['content-type'], 'text/html')
         t.ok(isHtml(str), 'is html')
         server.close()
@@ -69,6 +64,39 @@ test('css', (t) => {
         }))
       })
     })
+  })
+
+  t.test('options are passed on to sheetify', (t) => {
+    t.plan(1)
+    const sheetify = require('sheetify/transform')
+    const sheetifySpy = sinon.spy(sheetify)
+    const assets = createBankai({
+      css: {
+        ignore: 'This is ignored'
+      }
+    }, {
+      'sheetify/transform': sheetifySpy
+    })
+    assets.css().pipe(concat(() => {
+      const receivedOpts = sheetifySpy.args[0][1]
+      t.equal(receivedOpts.ignore, 'This is ignored', 'CSS options should be passed on to sheetify')
+    }))
+    //     assets._state.tinyLr = {reload: tinyLrReloadSpy}
+    //     const server = http.createServer((req, res) => {
+    //       assets.js(req, res).pipe(res)
+    //     })
+    //     server.listen()
+    //
+    //     // First get original bundle, then cause re-bundling and verify the latter
+    //     callServerAsync(server, 'bundle.js')
+    //       .then(() => {
+    //         // Cause re-bundling
+    //         fs.writeFileSync(appJsPath, 'const isModified = true')
+    //         return waitForRebundle(t, server)
+    //           .then(() => {
+    //             t.ok(tinyLrReloadSpy.called, 'tiny-lr reload should be called')
+    //           })
+    //       })
   })
 })
 

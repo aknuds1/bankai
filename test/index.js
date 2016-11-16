@@ -11,6 +11,12 @@ const test = require('tape')
 // const fs = require('fs')
 // const request = require('request')
 // const sinon = require('sinon')
+const bole = require('bole')
+const garnish = require('garnish')
+
+const pretty = garnish({ level: 'debug', name: 'bankai' })
+pretty.pipe(process.stdout)
+bole.output({ stream: pretty, level: 'debug' })
 
 const entryPath = path.join(__dirname, 'fixtures', 'index.js')
 // const appJsPath = path.join(__dirname, 'fixtures', 'app.js')

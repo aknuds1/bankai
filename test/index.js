@@ -120,7 +120,7 @@ test('css', (t) => {
   })
 })
 
-test('js', function (t) {
+test('js', (t) => {
   t.test('js returns data', function (t) {
     t.plan(1)
     const assets = createBankai()
@@ -137,6 +137,20 @@ test('js', function (t) {
         server.close()
       }))
     })
+  })
+
+  t.test('in optimize mode watchify is not used', (t) => {
+    t.plan(1)
+    const watchify = require('watchify')
+    const watchifySpy = sinon.spy(watchify)
+    const assets = createBankai({
+      optimize: true
+    }, {
+      'watchify': watchifySpy
+    })
+    assets.js().pipe(concat(() => {
+      t.ok(!watchifySpy.called, 'watchify should not be called')
+    }))
   })
 })
 

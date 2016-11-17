@@ -32,6 +32,8 @@ function Bankai (entry, opts) {
   })
 
   this._html = _html(opts.html)
+
+  if (opts.debug) opts.js = xtend(opts.js, {debug: true})
   this._createJs = _javascript(entry, opts, setCss)
 
   function setCss (css) {

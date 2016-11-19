@@ -104,6 +104,7 @@ const _javascript = (entry, opts, setCss) => {
     ? browserify(jsOpts)
     : watchify(browserify(jsOpts))
   if (!opts.cssDisabled) {
+    b.ignore('sheetify/insert')
     b.plugin(cssExtract, { out: createCssStream })
     b.transform(sheetify, opts.css)
   }

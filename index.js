@@ -20,32 +20,67 @@ function Bankai (entry, opts) {
 
   opts = opts || {}
 
+  opts.html = opts.html || {}
+  opts.css = opts.css || {}
+  opts.js = opts.js || {}
+
   assert.equal(typeof entry, 'string', 'bankai: entry should be a string')
   assert.equal(typeof opts, 'object', 'bankai: opts should be an object')
 
   const self = this
 
-  this.htmlDisabled = opts.html
+  this.htmlDisabled = (opts.html === false)
+  this.cssDisabled = (opts.css === false)
+  this.optimize = opts.optimize
   this.cssQueue = []
-  opts = xtend(opts, {
-    cssDisabled: opts.css === false
-  })
 
-  this._html = _html(opts.html)
+  if (opts.debug) opts.js = xtend(opts.js, { debug: true })
 
-  if (opts.debug) opts.js = xtend(opts.js, {debug: true})
-  this._createJs = _javascript(entry, opts, setCss)
+  this._html = (function () {
+    const base = {
+      script: 'bundle.js',
+      css: (self.cssDisabled) ? null : 'bundle.css',
+      head: '<meta name="viewport" content="width=device-width, initial-scale=1">'
+    }
+    const html = createHtml(xtend(base, opts.html))
+    return new Buffer(html)
+  })()
 
-  function setCss (css) {
-    self._css = css
-    while (self.cssQueue.length) self.cssQueue.shift()()
-  }
+  this._js = (function () {
+    const base = {
+      basedir: process.cwd(),
+      entries: [ entry ],
+      packageCache: {},
+      fullPaths: true,
+      cache: {}
+    }
+    const jsOpts = xtend(base, opts.js)
+
+    const b = (self.optimize)
+      ? browserify(jsOpts)
+      : watchify(browserify(jsOpts))
+
+    if (!self.cssDisabled) {
+      b.plugin(cssExtract, { out: createCssStream })
+      b.ignore('sheetify/insert')
+      b.transform(sheetify, opts.css)
+    }
+
+    return watchifyRequest(b)
+
+    function createCssStream () {
+      return concat({ encoding: 'buffer' }, function (css) {
+        self._css = css
+        while (self.cssQueue.length) self.cssQueue.shift()()
+      })
+    }
+  })()
 }
 
 // (obj, obj) -> readStream
 Bankai.prototype.js = function (req, res) {
   const through$ = new stream.PassThrough()
-  this._createJs(req, res, function (err, buffer) {
+  this._js(req, res, function (err, buffer) {
     if (err) return through$.emit('error', err)
     const source$ = from([buffer])
     pump(source$, through$)
@@ -55,7 +90,7 @@ Bankai.prototype.js = function (req, res) {
 
 // (obj, obj) -> readStream
 Bankai.prototype.html = function (req, res) {
-  assert.ok(this.htmlDisabled !== false, 'bankai: html is disabled')
+  assert.notEqual(this.htmlDisabled, true, 'bankai: html is disabled')
   if (res) res.setHeader('Content-Type', 'text/html')
   return from([this._html])
 }
@@ -75,43 +110,5 @@ Bankai.prototype.css = function (req, res) {
   } else {
     logger.debug(`Returning CSS content`)
     return from([this._css])
-  }
-}
-
-const _html = (opts) => {
-  const base = {
-    script: 'bundle.js',
-    css: 'bundle.css',
-    head: '<meta name="viewport" content="width=device-width, initial-scale=1">'
-  }
-  const html = createHtml(xtend(base, opts || {}))
-  return new Buffer(html)
-}
-
-// create a js watcher
-const _javascript = (entry, opts, setCss) => {
-  const base = {
-    basedir: process.cwd(),
-    entries: [ entry ],
-    packageCache: {},
-    fullPaths: true,
-    cache: {}
-  }
-
-  const jsOpts = xtend(base, opts.js || {})
-
-  const b = opts.optimize
-    ? browserify(jsOpts)
-    : watchify(browserify(jsOpts))
-  if (!opts.cssDisabled) {
-    b.ignore('sheetify/insert')
-    b.plugin(cssExtract, { out: createCssStream })
-    b.transform(sheetify, opts.css)
-  }
-
-  return watchifyRequest(b)
-
-  function createCssStream () {
-    return concat({ encoding: 'buffer' }, setCss)
   }
 }

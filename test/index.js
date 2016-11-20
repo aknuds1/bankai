@@ -103,13 +103,15 @@ test('css', (t) => {
     t.plan(2)
     const pluginSpy = sinon.spy()
     const transformSpy = sinon.spy()
+    const ignoreSpy = sinon.spy()
     createBankai({
       css: false
     }, {
       watchify: () => {
         return {
           plugin: pluginSpy,
-          transform: transformSpy
+          transform: transformSpy,
+          ignore: ignoreSpy
         }
       },
       'watchify-request': () => {}
@@ -117,6 +119,7 @@ test('css', (t) => {
 
     t.ok(!pluginSpy.called, 'Browserify plugin should not be registered')
     t.ok(!transformSpy.called, 'Browserify transform should not be registered')
+    t.ok(!ignoreSpy.called, 'Browserify ignore should not be called')
   })
 })
 

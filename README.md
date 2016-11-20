@@ -9,7 +9,38 @@
 
 ---
 
-[![stability][0]][1] [![npm version][2]][3] [![build status][4]][5] [![downloads][8]][9] [![js-standard-style][10]][11]
+<div align="center">
+  <!-- Stability -->
+  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
+    <img src="https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square"
+      alt="API stability" />
+  </a>
+  <!-- NPM version -->
+  <a href="https://npmjs.org/package/bankai">
+    <img src="https://img.shields.io/npm/v/bankai.svg?style=flat-square"
+      alt="NPM version" />
+  </a>
+  <!-- Build Status -->
+  <a href="https://travis-ci.org/yoshuawuyts/bankai">
+    <img src="https://img.shields.io/travis/yoshuawuyts/bankai/master.svg?style=flat-square"
+      alt="Build Status" />
+  </a>
+  <!-- Test Coverage -->
+  <a href="https://codecov.io/github/yoshuawuyts/bankai">
+    <img src="https://img.shields.io/codecov/c/github/yoshuawuyts/bankai/master.svg?style=flat-square"
+      alt="Test Coverage" />
+  </a>
+  <!-- Downloads -->
+  <a href="https://npmjs.org/package/bankai">
+    <img src="https://img.shields.io/npm/dm/bankai.svg?style=flat-square"
+      alt="Downloads" />
+  </a>
+  <!-- Standard -->
+  <a href="https://codecov.io/github/yoshuawuyts/bankai">
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square"
+      alt="Standard" />
+  </a>
+</div>
 
 ## Installation
 ```sh
@@ -66,11 +97,14 @@ http.createServer((req, res) => {
 
     Options:
       -c, --css=<subargs>     Pass subarguments to sheetify
+      -d, --debug             Include sourcemaps [default: false]
       -h, --help              Print usage
+      -H, --html=<subargs>    Pass subarguments to create-html
       -j, --js=<subargs>      Pass subarguments to browserify
       -o, --open=<browser>    Open html in a browser [default: system default]
       -O, --optimize          Optimize assets served by bankai [default: false]
-      -p, --port=<n>          Bind bankai to <n> [default: 8080]
+      -p, --port=<n>          Bind bankai to a port [default: 8080]
+      -V, --verbose           Include debug messages
 
   Examples:
     $ bankai index.js -p 8080            # start bankai on port 8080

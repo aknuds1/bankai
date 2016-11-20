@@ -100,7 +100,7 @@ test('css', (t) => {
   })
 
   t.test('css can be disabled', (t) => {
-    t.plan(2)
+    t.plan(3)
     const pluginSpy = sinon.spy()
     const transformSpy = sinon.spy()
     const ignoreSpy = sinon.spy()

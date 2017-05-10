@@ -9,6 +9,8 @@
 
 ---
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/aknuds1/bankai.svg)](https://greenkeeper.io/)
+
 <div align="center">
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">

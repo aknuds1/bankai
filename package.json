@@ -51,7 +51,7 @@
   "devDependencies": {
     "bel": "^4.5.0",
     "bluebird": "^3.4.6",
-    "choo": "^5.4.0",
+    "choo": "5.4.0",
     "dependency-check": "^2.6.0",
     "get-server-port": "^1.0.0",
     "is-html": "^1.0.0",

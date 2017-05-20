@@ -34,7 +34,7 @@
     "concat-stream": "^1.5.2",
     "create-html": "^3.0.0",
     "css-extract": "^1.2.0",
-    "explain-error": "^1.0.3",
+    "explain-error": "1.0.3",
     "from2": "^2.3.0",
     "garnish": "^5.2.0",
     "map-limit": "0.0.1",

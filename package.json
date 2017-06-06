@@ -57,7 +57,7 @@
     "is-html": "^1.0.0",
     "istanbul": "^0.4.4",
     "openport": "0.0.4",
-    "phantom": "^4.0.3",
+    "phantom": "4.0.3",
     "proxyquire": "^1.7.10",
     "request": "^2.75.0",
     "sinon": "^2.2.0",

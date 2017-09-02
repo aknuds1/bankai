@@ -32,7 +32,7 @@
     "bole": "^3.0.1",
     "browserify": "^14.3.0",
     "concat-stream": "^1.5.2",
-    "create-html": "^3.0.0",
+    "create-html": "^4.0.0",
     "css-extract": "^1.2.0",
     "explain-error": "^1.0.3",
     "from2": "^2.3.0",

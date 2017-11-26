@@ -1,6 +1,6 @@
 {
   "name": "@arve.knudsen/bankai",
-  "version": "5.1.4",
+  "version": "5.1.5",
   "description": "DIY asset server",
   "main": "index.js",
   "bin": {
@@ -42,7 +42,7 @@
     "opn": "^4.0.2",
     "pump": "^1.0.1",
     "resolve": "^1.1.7",
-    "sheetify": "5.2.0",
+    "sheetify": "^6.2",
     "subarg": "^1.0.0",
     "watchify": "^3.7.0",
     "watchify-request": "^2.1.0",

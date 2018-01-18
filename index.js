@@ -45,7 +45,7 @@ function Bankai (entry, opts) {
       head: '<meta name="viewport" content="width=device-width, initial-scale=1">'
     }
     const html = createHtml(xtend(base, opts.html))
-    return new Buffer(html)
+    return Buffer.from(html)
   })()
 
   this._js = (function () {

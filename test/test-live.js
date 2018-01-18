@@ -56,7 +56,7 @@ const waitForCondition = Promise.method((page, t, callback) => {
             if (timeElapsed < waitTimeout) {
               setTimeout(evaluateCondition, 50)
             } else {
-              reject()
+              reject(new Error('timeout'))
             }
           }
         })

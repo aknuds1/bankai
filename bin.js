@@ -86,7 +86,7 @@ function main (argv) {
   }
 
   if (argv.v) {
-    console.info(require('../package.json').version)
+    console.info(require('./package.json').version)
     return process.exit()
   }
 

@@ -21,7 +21,7 @@ test('setup', (t) => {
   t.plan(1)
 
   bankaiProcess = childProcess.execFile(path.join(__dirname, '../bin/index.js'),
-      ['start', '-l', '-p', port, '--css.use', 'sheetify-cssnext', `--entry`, entryPath])
+      ['start', '-l', '-p', port, '--css.transform', 'sheetify-cssnext', `--entry`, entryPath])
 
   let numTries = 0
 

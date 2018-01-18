@@ -30,7 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "bole": "^3.0.1",
-    "browserify": "^14.3.0",
+    "browserify": "^15.2",
     "concat-stream": "^1.6.0",
     "create-html": "^3.0.0",
     "css-extract": "^1.2.0",
@@ -52,7 +52,7 @@
     "bel": "^4.6.0",
     "bluebird": "^3.5",
     "choo": "^5.4.0",
-    "dependency-check": "^2.10.0",
+    "dependency-check": "^3.0",
     "get-server-port": "^1.0.0",
     "is-html": "^1.1.0",
     "istanbul": "^0.4.4",

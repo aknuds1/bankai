@@ -338,6 +338,7 @@ Available options are:
   if you have your own logging system.
 - __opts.watch:__ Defaults to `true`. Watch for changes in the source files and
   rebuild. Set to `false` to get optimized bundles.
+- __babelifyDeps:__ Defaults to true. Transform dependencies with babelify.
 
 ### `compiler.documents(routename, [opts], done(err, { buffer, hash }))`
 Output an HTML bundle for a route. Routes are determined based on the project's

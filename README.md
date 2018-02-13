@@ -306,7 +306,7 @@ includes IE11. And if you have different opinions on which browsers to use,
 Bankai respects `.babelrc` and [`.browserslistrc`](https://github.com/ai/browserslist) files.
 
 Some newer JavaScript features require loading an extra library; `async/await`
-being the clearest example. To enable this features, the `babel-polyfill`
+being the clearest example. To enable such features, the `babel-polyfill`
 library needs to be included in your application's root (e.g. `index.js`).
 
 ```js
@@ -328,6 +328,11 @@ Whenever a change in the internal graph occurs.
 ### `compiler = bankai(entry, [opts])`
 Create a new bankai instance. Takes a path to a JavaScript file as the first
 argument. The following options are available:
+
+Available options are:
+
+* watch: Enable watching of source files and disable minification
+* babelifyDeps: Control whether dependencies are transformed with babelify or not, default: true
 
 - __opts.quiet:__ Defaults to `false`. Don't output any data to `stdout`. Useful
   if you have your own logging system.

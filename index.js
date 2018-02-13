@@ -104,6 +104,7 @@ function Bankai (entry, opts) {
     dirname: this.dirname,
     assert: opts.assert !== false,
     watch: opts.watch !== false,
+    babelifyDeps: opts.babelifyDeps !== false,
     fullPaths: opts.fullPaths,
     reload: Boolean(opts.reload),
     log: this.log,

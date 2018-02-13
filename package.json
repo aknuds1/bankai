@@ -1,9 +1,9 @@
 {
-  "name": "bankai",
+  "name": "@arve.knudsen/bankai",
   "version": "9.10.6",
   "description": "The easiest way to compile JavaScript, HTML and CSS",
   "license": "Apache-2.0",
-  "repository": "choojs/bankai",
+  "repository": "aknuds1/bankai",
   "main": "index.js",
   "bin": {
     "bankai": "bin.js"

@@ -102,7 +102,6 @@ function Bankai (entry, opts) {
   // Kick off the graph.
   this.graph.start({
     dirname: this.dirname,
-    assert: opts.assert !== false,
     watch: opts.watch !== false,
     babelifyDeps: opts.babelifyDeps !== false,
     fullPaths: opts.fullPaths,

@@ -43,7 +43,7 @@
     "fs-compare": "^0.0.4",
     "get-port": "^3.2.0",
     "glslify": "^6.1.1",
-    "gzip-size": "^4.1.0",
+    "gzip-size": "^5.0.0",
     "hstream": "^1.2.0",
     "html-minifier": "^3.5.14",
     "http-gzip-maybe": "^1.0.0",

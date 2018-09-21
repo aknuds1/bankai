@@ -1,6 +1,6 @@
 node_js:
-- "8"
 - "9"
+- "10"
 sudo: false
 language: node_js
 script: "npm run test"

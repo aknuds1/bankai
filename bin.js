@@ -152,8 +152,8 @@ function alternateBuffer () {
   var esc = Buffer.from([0x1B])
 
   process.stdout.write('\x1b[?1049h') // Enter alternate buffer.
-  process.stdout.write('\x1b[H')      // Reset screen to top.
-  process.stdout.write('\x1b[?25l')   // Hide cursor
+  process.stdout.write('\x1b[H') // Reset screen to top.
+  process.stdout.write('\x1b[?25l') // Hide cursor
 
   process.on('unhandledRejection', onexit)
   process.on('uncaughtException', onexit)
@@ -169,8 +169,8 @@ function alternateBuffer () {
   }
 
   function onexit (statusCode) {
-    process.stdout.write('\x1b[?1049l')  // Enter to main buffer.
-    process.stdout.write('\x1b[?25h')    // Restore cursor
+    process.stdout.write('\x1b[?1049l') // Enter to main buffer.
+    process.stdout.write('\x1b[?25h') // Restore cursor
 
     if (statusCode instanceof Error) {
       console.error('A critical error occured, forcing Bankai to abort:\n')

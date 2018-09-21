@@ -336,6 +336,6 @@ tape('inlines critical css', function (assert) {
     assert.error(err, 'no error writing document')
     var body = res.buffer.toString('utf8')
     assert.notEqual(body.indexOf('.classA{color:red;}'), -1, 'inlined the .classA selector')
-    assert.equal(body.indexOf('.classB{color:blue;}'), -1, 'did not inline the .classB selector')
+    assert.strictEqual(body.indexOf('.classB{color:blue;}'), -1, 'did not inline the .classB selector')
   })
 })

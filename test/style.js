@@ -29,7 +29,7 @@ tape('extract style from script', function (assert) {
   var compiler = bankai(tmpScriptname, { watch: false })
   compiler.styles('bundle.css', function (err, res) {
     assert.error(err, 'no error writing style')
-    assert.equal(res.buffer.toString(), expected, 'res was equal')
+    assert.strictEqual(res.buffer.toString(), expected, 'res was equal')
     rimraf.sync(tmpDirname)
   })
 
@@ -61,7 +61,7 @@ tape('remove unused styles', function (assert) {
   var compiler = bankai(tmpScriptname, { watch: false })
   compiler.styles('bundle.css', function (err, res) {
     assert.error(err, 'no error writing style')
-    assert.equal(res.buffer.toString(), expected, 'res was equal')
+    assert.strictEqual(res.buffer.toString(), expected, 'res was equal')
     rimraf.sync(tmpDirname)
   })
 

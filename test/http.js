@@ -93,7 +93,7 @@ tape('should route urls appropriately', function (assert) {
   var count = 0
   urls.forEach(function (url) {
     http.get('http://localhost:3030' + url, function (res) {
-      assert.equal(res.statusCode, 200, url)
+      assert.strictEqual(res.statusCode, 200, url)
       if (++count === urls.length) {
         server.close()
         assert.end()

@@ -145,7 +145,7 @@ tape('skip babel for dependencies if babelifyDeps is false', function (assert) {
 `
 
   var filename = 'js-pipeline-' + (Math.random() * 1e4).toFixed() + '.js'
-  const outputDir = tmp.dirSync({unsafeCleanup: true})
+  const outputDir = tmp.dirSync({ unsafeCleanup: true })
   var tmpFilename = path.join(outputDir.name, filename)
   fs.writeFileSync(tmpFilename, file)
   const nodeModulesDir = path.join(outputDir.name, 'node_modules')
@@ -180,7 +180,7 @@ tape('skip babel for dependencies if babelifyDeps is false', function (assert) {
 `
 
   var filename = 'js-pipeline-' + (Math.random() * 1e4).toFixed() + '.js'
-  const outputDir = tmp.dirSync({unsafeCleanup: true})
+  const outputDir = tmp.dirSync({ unsafeCleanup: true })
   var tmpFilename = path.join(outputDir.name, filename)
   fs.writeFileSync(tmpFilename, file)
   const nodeModulesDir = path.join(outputDir.name, 'node_modules')

@@ -42,7 +42,7 @@
     "flush-write-stream": "^1.0.3",
     "fs-compare": "^0.0.4",
     "get-port": "^4.0",
-    "glslify": "^6.3.1",
+    "glslify": "^7.0.0",
     "gzip-size": "^5.0",
     "hstream": "^1.2.0",
     "html-minifier": "^3.5.20",

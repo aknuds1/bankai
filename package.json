@@ -73,7 +73,7 @@
     "split2": "^3.0",
     "strip-ansi": "^4.0.0",
     "tfilter": "^1.0.1",
-    "through2": "^2.0.3",
+    "through2": "^3.0.0",
     "tinyify": "^2.4.3",
     "v8-compile-cache": "^2.0",
     "wasm-brotli": "^1.0.2",

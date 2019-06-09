@@ -78,7 +78,7 @@
     "v8-compile-cache": "^2.0",
     "wasm-brotli": "^1.0.2",
     "watchify": "^3.11.0",
-    "wayfarer": "^6.6.4",
+    "wayfarer": "^7.0.0",
     "yo-yoify": "^4.3.0"
   },
   "devDependencies": {

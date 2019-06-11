@@ -83,7 +83,7 @@
     "a-module-with-babelrc": "^1.0.0",
     "assert-html": "^1.1.5",
     "choo": "^6.13.3",
-    "choo-devtools": "^2.5.1",
+    "choo-devtools": "^3.0.0",
     "choo-service-worker": "^3.0",
     "rimraf": "^2.6.3",
     "standard": "^12.0",

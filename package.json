@@ -51,7 +51,7 @@
     "keypress": "^0.2.1",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "nanologger": "^1.3.1",
+    "nanologger": "^2.0.0",
     "nanoraf": "^3.1.0",
     "nanotiming": "^7.3.1",
     "on-idle": "^3.1.4",

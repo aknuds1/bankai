@@ -59,7 +59,7 @@
     "pino-colada": "^1.4.2",
     "prettier-bytes": "^1.0.4",
     "pump": "^3.0.0",
-    "pumpify": "^1.5.1",
+    "pumpify": "^2.0.0",
     "purify-css": "^1.2.5",
     "recursive-readdir": "^2.2.2",
     "recursive-watch": "^1.1.4",

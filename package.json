@@ -43,7 +43,7 @@
     "get-port": "^5.0",
     "glslify": "^7.0",
     "gzip-size": "^5.1.1",
-    "hstream": "^1.2.0",
+    "hstream": "^2.0.0",
     "http-gzip-maybe": "^1.0.0",
     "inline-critical-css": "^1.2.1",
     "keypress": "^0.2.1",

@@ -45,7 +45,7 @@
     "gzip-size": "^5.1.1",
     "hstream": "^1.2.0",
     "http-gzip-maybe": "^1.0.0",
-    "inline-critical-css": "^1.2.1",
+    "inline-critical-css": "^2.0.0",
     "keypress": "^0.2.1",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",

@@ -16,8 +16,8 @@
   },
   "keywords": [],
   "dependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "ansi-diff": "^1.1.1",
     "ansi-escape-sequences": "^4.1.0",
     "async-collection": "^1.0.1",

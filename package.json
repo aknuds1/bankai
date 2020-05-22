@@ -55,7 +55,7 @@
     "on-idle": "^3.1.4",
     "open": "^6.3",
     "p-wait-all": "^1.0.0",
-    "pino": "^5.12.6",
+    "pino": "^5.17.0",
     "pino-colada": "^1.4.2",
     "prettier-bytes": "^1.0.4",
     "pump": "^3.0.0",
